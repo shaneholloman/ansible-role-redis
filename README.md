@@ -1,6 +1,6 @@
 # Ansible Role: Redis
 
-[![CI](https://github.com/shaneholloman-org/ansible-role-redis/actions/workflows/ci.yml/badge.svg)](https://github.com/shaneholloman-org/ansible-role-redis/actions/workflows/ci.yml)
+[![CI](https://github.com/shaneholloman/ansible-role-redis/actions/workflows/ci.yml/badge.svg)](https://github.com/shaneholloman/ansible-role-redis/actions/workflows/ci.yml)
 
 Installs [Redis](http://redis.io/) on Linux.
 
@@ -162,4 +162,3 @@ MIT / BSD
 ## Author Information
 
 This role was created in 2023
-
