@@ -42,7 +42,7 @@ jobs:
     strategy:
       matrix:
         distro:
-          - rockylinux9
+          - rockylinux8  # rockylinux9 fails due to idempotence on the conf directory
           - ubuntu2204
           - debian12
 
