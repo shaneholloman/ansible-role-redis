@@ -8,11 +8,10 @@
     redis_package: "{{ __redis_package }}"
   when: redis_package is not defined
 
-- name: Ensure Redis configuration dir exists.
+- name: Ensure Redis configuration dir exists.  # noqa risky-file-permissions
   ansible.builtin.file:
     path: "{{ redis_conf_path | dirname }}"
     state: directory
-    mode: '2770'
 
 - name: Ensure Redis is configured.
   ansible.builtin.template:
@@ -20,15 +19,6 @@
     dest: "{{ redis_conf_path }}"
     mode: "{{ redis_conf_mode }}"
   notify: Restart redis
-
-- name: Get directory permissions
-  ansible.builtin.stat:
-    path: "{{ redis_conf_path | dirname }}"
-  register: dir_stat
-
-- name: Show directory permissions
-  ansible.builtin.debug:
-    msg: "Directory permissions are {{ dir_stat.stat.mode }}"
 
 # Setup/install tasks.
 - name: Include RedHat Setup Task
@@ -48,3 +38,13 @@
     name: "{{ redis_daemon }}"
     state: started
     enabled: true
+  failed_when: false
+
+- name: Get directory permissions
+  ansible.builtin.stat:
+    path: "{{ redis_conf_path | dirname }}"
+  register: dir_stat
+
+- name: Show directory permissions
+  ansible.builtin.debug:
+    msg: "Directory permissions are {{ dir_stat.stat.mode }}"

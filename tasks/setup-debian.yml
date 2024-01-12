@@ -3,18 +3,3 @@
   ansible.builtin.apt:
     name: "{{ redis_package }}"
     state: present
-
-- name: Reset Redis configuration dir permissions.
-  ansible.builtin.file:
-    path: "{{ redis_conf_path | dirname }}"
-    state: directory
-    mode: '2770'
-
-- name: Get directory permissions
-  ansible.builtin.stat:
-    path: "{{ redis_conf_path | dirname }}"
-  register: dir_stat
-
-- name: Show directory permissions
-  ansible.builtin.debug:
-    msg: "Directory permissions are {{ dir_stat.stat.mode }}"
