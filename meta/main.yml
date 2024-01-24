@@ -1,13 +1,12 @@
 ---
-dependencies: []
-
 galaxy_info:
   role_name: redis
   author: shaneholloman
   description: Redis for Linux
   company: "shaneholloman"
   license: "license (Unlicense)"
-  min_ansible_version: "2.10"
+  min_ansible_version: "2.12"
+
   platforms:
     - name: Fedora
       versions:
@@ -21,6 +20,7 @@ galaxy_info:
     - name: ArchLinux
       versions:
         - all
+
   galaxy_tags:
     - database
     - development
@@ -28,3 +28,5 @@ galaxy_info:
     - redis
     - cache
     - performance
+
+dependencies: []
